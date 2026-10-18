@@ -1,0 +1,4 @@
+{
+  "extends": "@riff-lab/tsconfig/base.json",
+  "include": ["src"]
+}

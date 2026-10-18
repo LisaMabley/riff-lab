@@ -1,0 +1,363 @@
+# Riff Lab — Project Plan
+
+_Updated 2026-10-17_
+
+## 1. Overview
+
+Riff Lab is a fashion community built around inspiration, interpretation, and creative response. Someone posts a look or styling idea; others make their own versions (**remixes**), which can inspire more remixes. The resulting network of ideas and interpretations is the core experience.
+
+The product focuses on fashion and personal style. Expanding into other creative fields can wait.
+
+- **App name:** undecided. Riff Lab is the working name; Riff Collective is another candidate.
+- **Action word:** "remix" (button: _Remix this_; count: _12 remixes_; attribution: _remixed from @maya_). Chosen independently of the app name. Alternatives considered: riff, take, spin.
+
+## 2. Product principles
+
+- Creativity and participation over popularity and passive scrolling.
+- Interpretation over imitation.
+- Meaningful interaction without public popularity contests.
+  - **Exception, on purpose:** remix counts are public, because they reward making something. Applause stays private.
+- Make room for different bodies, budgets, identities, abilities, modesty needs, and styles.
+- Treat safety and accessibility as part of the product.
+
+## 3. Posts and remixes
+
+- A post has 1–6 images plus text, public tags, and an optional remix link.
+- A remix has exactly **one** "remixed from" post. Multiple inspirations are out of scope.
+- The remix link can be set or changed for **24 hours** after posting. After that it can only be removed.
+- The original post shows all its remixes together. Remixes can be remixed, forming branching chains.
+- **Remixes always survive their original.** When the original can't be shown, the "remixed from" spot shows a neutral placeholder card ("Original not available"):
+
+| Why the original is gone | Who sees the placeholder |
+|---|---|
+| Block between the two users | Only those two users; everyone else still sees the credit |
+| Hidden while a report is reviewed | Everyone it is hidden from |
+| Removed by a moderator | Everyone |
+| Deleted by its creator | Everyone |
+| Creator deleted their account | Everyone |
+
+Keep the wording vague; don't say "removed for violating rules."
+
+## 4. MVP scope
+
+_This is the full MVP. It's built in three phases; see section 17 for what comes first._
+
+**In the core MVP**
+
+- Accounts (18+) and profiles
+- Image posts and remix relationships
+- Feed with filters and sort
+- Public and private tags
+- Comments (one level of replies)
+- Favorites (posts and profiles) and private applause
+- In-app notifications
+- Reporting and blocking, plus a minimal admin page
+- Mobile app (iOS and Android) and a web app (participation, no posting)
+
+**Later in the MVP, after the core works**
+
+- Push notifications for remixes only, with batching
+
+**Out of scope for the MVP**
+
+- Private posts; per-post controls to disable applause, comments, or remixing
+- Server-saved drafts, video
+- External images and links
+- Following or mutual friends; a public social graph
+- Shopping and affiliate links, creator monetization, federation, advanced analytics, AI styling
+- Automated moderation, appeals, strike systems
+
+## 5. Feed and discovery
+
+- **Default:** most recent first. Shows both original posts and remixes; remixes show "remixed from @someone."
+- **Sort options:** most recent, or most remixed over the last 30 / 60 / 90 days / all time (default 30).
+- **Remix count** shows on every post card and is hidden when it's zero.
+- **Filters:**
+  - Favorites only (new posts from favorited profiles)
+  - Include tags: a post must have **all** of them (AND)
+  - Exclude tags: a post is hidden if it has **any** of them
+  - Your own private tags can be used in filters
+- Filter settings are saved, with a clear button.
+- **Always excluded:** blocked users (in both directions), reported content that's hidden, and AI images if the user has opted out.
+
+## 6. Applause and favorites
+
+- **Applause:** a lightweight cheer. No public count; the creator can see who applauded. Users can't turn it off in the MVP. Creators get a batched in-app notification (see section 11).
+- **Favorites (♡):** for posts and profiles, for the favoriter's personal use only. Favorited posts appear in a private "Saved" view on your profile.
+  - **No one else ever learns about a favorite.** The person or post favorited is never told: no notification, no count, no list of who favorited them. Favoriting never sends applause.
+  - Favorites never affect what other people see. They don't factor into sort order, ranking, or anything shown publicly.
+  - RLS: only the favoriter can read their own favorites.
+- "Favorite" is the term everywhere; never "bookmark."
+
+## 7. Comments
+
+- Comments belong on posts, not profiles. On by default; can't be disabled per post in the MVP.
+- One level of replies, with room to expand later.
+- No comment likes or emoji reactions.
+- Authors can edit their comments (shown as "edited") and delete them.
+- **Post owners can delete any comment on their posts.**
+
+## 8. Tags
+
+- Each tag is stored **once** and shared by public and private use.
+- **Public tags:** only the owner can add them, to their own posts and profile. No suggesting tags on other people's content.
+- **Private tags:** anyone can add them to any post or profile. Only the person who added a private tag can see that assignment, admins included. The platform can see tag words, not who used them or where. Say this plainly in the privacy policy.
+- **Autocomplete** suggests tags used publicly somewhere plus your own private tags. A tag used only privately by someone else never appears.
+- **Blocked words:** every new tag, public or private, is checked against a blocked-words list. Blocked words never enter the database.
+- **Display:** public tags are blue; private tags are green **with a lock icon or dashed outline**, so color isn't the only cue.
+- **Admin review:** common public tags can be promoted, and synonyms and duplicates merged. Tag statuses: normal, promoted, merged-into-another-tag.
+
+## 9. Images
+
+- Up to 6 per post. Users can reorder them before posting; the first image is shown in the feed.
+- **Feed:** full width, natural height, cropped only at the bottom if taller than 2:3 portrait. Never forced square.
+- **Post view:** full image, never cropped.
+- **Location data (EXIF/GPS) is always stripped on the server.**
+- Accept HEIC. Resize to about 2048px on the long side and generate smaller versions for the feed.
+- **Alt text:** prompted but optional ("Describe this look for people using screen readers"). Posts where every image has alt text show a "described" badge.
+- Images can't be swapped after posting.
+- No video in the MVP.
+
+## 10. AI-generated images
+
+- Allowed when labeled. Labeling is **per image**: an "AI-generated" toggle on each image when posting.
+- Definition shown next to the toggle: "generated or substantially changed by AI." Ordinary filters, lighting fixes, and background blur don't count.
+- AI images show an AI icon in a corner everywhere they appear (feed, post view, "remixed from" previews). Screen readers announce "AI-generated image" before the alt text.
+- A post with any AI image counts as AI for filtering.
+- Shown by default. Onboarding offers a one-tap "Hide AI images."
+- AI images can be remixed. Each post is labeled by its own images.
+- Moderators can add a missing AI label instead of removing the post.
+
+## 11. Notifications
+
+In-app (a bell with a list) for:
+
+- Someone remixed your post
+- Someone commented on your post
+- Someone replied to your comment
+- A moderation action on your content (always on; can't be disabled)
+- Your report was resolved ("Thanks, we reviewed your report")
+- People applauded your post, **batched**:
+  - grouped per post, at most once a day: "Maya and 4 others applauded your look"
+  - shows names, not a number; "4 others" can be tapped to see who
+  - in-app only, never push
+
+Each type except moderation notices can be switched off. No notifications for being favorited.
+
+**Later in the MVP:** push notifications for remixes only, batched.
+
+## 12. Editing and deletion
+
+- **Posts:** text and public tags can be edited at any time. Images can't be swapped. Posts can be deleted at any time; their remixes show the placeholder.
+- **Remix link:** set or changed within 24 hours of posting; after that, removable only.
+- **Comments:** editable (marked "edited") and deletable by their author; deletable by the post owner.
+- **Account deletion:** available in the app (an app store requirement). It removes the person's posts, comments, applause, favorites, and tags. Remixes of their posts show the placeholder.
+- **Drafts:** no server drafts. An unfinished post is saved on the device until it's posted or thrown away.
+
+## 13. Safety and moderation
+
+### Reporting
+
+Posts, comments, and profiles can be reported.
+
+- A report **always hides the content for the reporter**.
+- It's hidden for **everyone** once **2 different accounts** report it. The threshold is a setting, not hardcoded, and rises as the community grows.
+- Reports from accounts **under 3 days old** don't count toward the threshold.
+- **Instant hide for everyone on a single report** in these categories:
+  - Nudity or sexual content
+  - Sexual content involving minors (wording matters: a child appearing in an outfit photo is not a violation)
+  - Violence or threats
+  - Sharing someone's private info (doxxing)
+- Each account can trigger hiding for everyone on up to **3 reports per day**. Past that, their reports still reach the moderation queue and still hide the content for them. The reporter sees no difference.
+- There's no mechanism to ban someone from reporting.
+
+**Standard report categories** (normal threshold): harassment or bullying; body shaming; hate or discrimination; harmful or insulting tags (the reporter can point to the specific tag); spam or scams; impersonation; unlabeled AI image; stolen or copyrighted image (ask whether the reporter is the owner); something else (free text).
+
+**Self-harm or suicide:** don't hide the post. Move it to the top of the queue and show crisis resources to the reporter, and possibly to the poster.
+
+Keep the in-app category list to about 8 options plus "Something else."
+
+### Blocking
+
+If A blocks B:
+
+- Neither person sees the other's posts, profile, or comments anywhere: feeds, search, remix chains.
+- Neither can comment on, remix, applaud, or favorite the other's posts.
+- B isn't told. A's profile shows B "not available."
+- Comments B already left on A's posts are hidden from everyone.
+- Existing remixes between them stay. A and B see the placeholder in place of the other's post; everyone else still sees the credit.
+- Blocking is available on both mobile and web.
+
+### Moderation tooling (single moderator at launch)
+
+- One admin page listing open reports, oldest first. Each shows the content, category, reporter, and reason, with actions: **Remove**, **Dismiss**, **Preserve & report** (child safety), and **Add AI label**.
+- An email alert to the moderator whenever something is instantly hidden.
+- No assignments, queues, or moderator roles until a second moderator joins.
+
+### Child safety
+
+US law requires reporting sexual content involving minors to NCMEC and preserving the evidence rather than simply deleting it. "Preserve & report" must exist before the public launch.
+
+Moderation also covers harassment, body shaming, discrimination, harmful tags, spam, impersonation, scams, and copyright concerns.
+
+## 14. Legal
+
+_Not legal advice. Have someone qualified review before the public launch._
+
+- **Minimum age:** 18+, with birth date entered at signup. The birth date is checked and discarded; only the time of the age check (`age_confirmed_at`) is stored.
+- **Region:** US only. App store listings are US only; the terms say US users (web can't strictly block other regions).
+- **Terms of service and privacy policy:** start from a reputable template, then add the Riff Lab specifics:
+  - by posting, you allow others to make and post their own interpretations (remixes) of your look
+  - the private-tag promise: the platform sees tag words, not who used them
+  - location data is removed from photos
+  - the reporting and removal rules
+- **Copyright takedowns (DMCA):** register a designated agent with the US Copyright Office; publish a takedown contact; have a counter-notice process and a repeat-infringer policy. The "Stolen or copyrighted image" report category feeds into this process.
+
+## 15. Platforms
+
+- **Mobile (iOS and Android, through Expo):** everything, including posting and remixing. Mobile is built first.
+- **Web (Expo + React Native Web):** browse the feed and filters, view posts and remix chains, comment, favorite, applaud, tag (public tags on your own content, private tags on anything), report, and block. No posting or remixing on the web for now.
+- **Sign-in (mobile and web):** email one-time code (no passwords), Sign in with Apple, and Google. Apple requires Sign in with Apple when other social sign-in is offered.
+
+## 16. Technology and architecture
+
+- **Language:** TypeScript throughout.
+- **Repository:** a monorepo sharing types, validation, domain logic, and UI between the mobile and web apps.
+- **Data:** PostgreSQL on Supabase (auth, storage, managed infrastructure).
+- **Row-Level Security:** turned on for **every** table in the `public` schema. Tables meant to be open get explicit "anyone can read" rules, so a table someone forgets to configure stays locked.
+- **Logic placement:** in the database first, then Edge Functions, then a separate service only if needed.
+
+| Logic | Where |
+|---|---|
+| Report thresholds, daily report limit, account-age rule | Database (rules and triggers) |
+| 24-hour remix-link rule | Database |
+| Blocked-words check on tag creation | Database |
+| Block visibility | RLS |
+| Image processing (EXIF stripping, resizing, HEIC conversion) | Server: Supabase Edge Functions if feasible, otherwise a small Hono service on Node (e.g. Fly.io or Railway) |
+| Moderation actions, moderator email alerts, push (later) | Supabase Edge Functions or Hono |
+
+- **Early check:** confirm whether image processing runs reliably on Supabase Edge Functions (Deno has limited image libraries) before building the upload flow.
+
+**Tag tables (sketch):**
+
+| Table | Contents | Who can read |
+|---|---|---|
+| `tags` | One row per tag: text, status (normal / promoted / merged into another tag) | Tags used publicly somewhere, plus tags you've used yourself |
+| `post_tags`, `profile_tags` | Public tag assignments | Anyone; only the post or profile owner can add or remove them |
+| `private_tag_assignments` | Which tag a user put on which post or profile | Only that user |
+
+**Ownership rules RLS must cover:** profiles, posts, images, remix links, comments, applause, favorites, public and private tag assignments, reports, blocks, notifications.
+
+### Testing
+
+| Layer | Tool | Notes |
+|---|---|---|
+| RLS rules and database logic | **pgTAP**, run with `supabase test db` | The most important layer: privacy promises (private tags, favorites, blocks, report hiding) live in RLS. Every policy gets tests for who can and can't read or write. |
+| Shared packages (domain logic, validation) and the Hono service | **Vitest** | |
+| React Native components | **Jest with `jest-expo`** + **React Native Testing Library** | Expo's supported setup; the one place a second test runner is worth it. |
+| End-to-end, mobile | **Maestro** | First flow: the Phase 1 core loop (post, remix, comment, block). |
+| End-to-end, web | **Playwright** | |
+
+**When each comes in:**
+- **Phase 1:** pgTAP and Vitest from the start.
+- **Once the UI settles:** component tests, then the Maestro core-loop flow.
+- **Phase 2:** Playwright, when web participation is built.
+
+## 17. Build phases
+
+This document describes the full MVP. **Build it in phases, not all at once.** Each phase ships something people can use, and later phases add to the data model with migrations rather than building everything up front.
+
+### Get right from day one (cheap now, painful later)
+
+- One "remixed from" link per post; remixes survive their original (placeholder card)
+- RLS on every table
+- Tags stored once; private tag assignments in their own table
+- Location data stripped from photos on the server
+- 18+ check at signup (birth date not stored)
+- pgTAP tests for every RLS policy, written alongside the policy
+
+### Phase 1 — Friends beta
+
+_Goal: test success milestones 1 and 2 with an invite-only group (TestFlight / Expo)._
+
+1. Monorepo, Expo app, Supabase project, sign-in (email code, Apple, Google), 18+ check at signup (birth date not stored), basic profiles.
+2. **Early check:** image processing on Supabase Edge Functions (fall back to a small Hono/Node service if needed).
+3. Image posts: upload, EXIF stripping, resizing, reordering, alt text prompt.
+4. Remixes: the "remixed from" link with the 24-hour rule, remixes listed on the original, placeholder card.
+5. Feed: newest first, plus a tag filter. Remix count on cards.
+6. Comments and one level of replies; post owners can delete comments.
+7. Public tags (owner only) with the blocked-words check.
+8. Blocking (full rules from section 13).
+9. **Simple reporting:** every report hides the content for the reporter and emails the moderator. All review is manual, using the Supabase dashboard and a saved query for open reports.
+10. Remix and comment notifications (in-app).
+
+**End-to-end milestone:** a user creates a profile and an outfit post; another user remixes it; the original shows its remixes; both users can comment and tag; reporting and blocking work.
+
+### Phase 2 — Core MVP
+
+_Goal: make exploring and organizing rewarding; test milestones 3 and 4._
+
+1. Feed sort (most remixed over 30 / 60 / 90 days / all time), exclude-tag and favorites filters, saved filters with a clear button.
+2. Private tags, autocomplete rules, filtering by your own private tags.
+3. Favorites (posts and profiles) and the private "Saved" view.
+4. Applause.
+5. Full in-app notifications, including batched applause and reply notifications.
+6. AI labels per image, the AI icon, and "Hide AI images" in onboarding.
+7. "Described" badge for posts with alt text.
+8. Web app with participation features (section 15).
+9. Tag promotion and merging, once there are enough tags to tidy.
+
+### Phase 3 — Public launch
+
+_Goal: everything required to open to the public and pass App Store review._
+
+1. Full reporting rules: 2-account threshold (as a setting), account-age rule, instant-hide categories, daily limits, full category list, self-harm handling.
+2. Admin page with Remove, Dismiss, Preserve & report, and Add AI label; email alerts on instant hides.
+3. "Preserve & report" workflow for child-safety content.
+4. Report-resolved and moderation-action notifications.
+5. Account deletion in the app.
+6. Terms of service, privacy policy, DMCA agent and takedown process.
+7. Push notifications for remixes, batched.
+
+## 18. Success milestones
+
+Each step matters once the previous one is happening:
+
+1. **People show up:** someone invited signs up and makes a post.
+2. **People remix:** someone remixes a post without being asked.
+3. **Strangers connect:** someone remixes a post by someone they don't know personally. _This is the real signal that Riff Lab works._
+4. **People come back:** someone posts a second time without being reminded.
+
+Possible later metrics, once there's a real user base: share of posts that are remixes; share of originals remixed within 30 days; chains 3+ levels deep; 2-week return rate.
+
+## 19. Open questions
+
+- Final app name.
+- Profile fields (display name, pronouns, bio, profile tags, links?).
+- Search scope: tags only, or also usernames and post text?
+- Text limits for posts, comments, and tags.
+
+## 20. Later (not MVP)
+
+- Push notifications for comments and replies
+- A teens-only space (separate audience, likely age verification, stricter defaults)
+- Server-saved drafts that sync across devices
+- Video
+- Multiple inspirations per remix
+- Posting and remixing on the web
+- External images and links, with clear attribution and copyright rules (especially for sources like Pinterest)
+- Saved named feeds ("My thrift people") and OR tag filters
+- Per-post controls for applause, comments, and remixing; private posts
+- Appeals and strike systems; automated moderation; moderator roles and queues
+- Expanding beyond the US
+- Creator communities and challenges, creator tools or services, optional paid features, open social protocols. Core participation should stay accessible. Business model and open-source vs. commercial direction are undecided.
+
+## 21. Visual direction
+
+Creative, inclusive, down-to-earth, and a little rebellious, without prescribing one fashion subculture. References: BUST Magazine, Miranda July's Somebody app, Wet Leg, The Linda Lindas, Lola Young. Use them for attitude, not imitation.
+
+## 22. Guiding question
+
+> Does this make it easier, safer, or more rewarding for people to inspire one another and create their own interpretations?
+
+If not, and it mainly adds popularity signals or complexity, it probably doesn't belong in the early product.
