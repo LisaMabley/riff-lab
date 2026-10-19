@@ -8,6 +8,17 @@ Riff Lab (working name) is a fashion community built on **remixes**: someone pos
 
 Phase 1 (invite-only friends beta) is in progress. So far: the database foundation for users (profiles and the 18+ check), RLS, and tests. **Not started:** posts, images, and remixes; the Expo app (`apps/` is empty); sign-in; everything after that. Build phase by phase (§17), extending the schema with new migrations rather than modeling future phases up front. Check §4 "Out of scope" and §20 before adding anything.
 
+## Work in small chunks
+
+Lisa reviews every change, so size work like a team ticket: about 3–5 story points, roughly a day or two of focused work.
+
+- **PR size:** aim for 400 changed lines or fewer. Treat 800 as the ceiling. Generated files (`database.types.ts`), lockfiles, and snapshots don't count toward the limit. Call them out in the PR description instead.
+- **Plan first:** before starting a feature, break it into tickets, each one small enough to fit the limit and useful on its own. Propose the list and let Lisa approve it before writing code. If a ticket turns out bigger than expected while you're building it, stop and propose a split. Don't keep going.
+- **Slice vertically:** each PR should be a thin, complete piece, for example one table with its RLS, grants, and pgTAP tests. Avoid layers that don't work yet ("all the migrations now, all the policies later").
+- **Tests stay in the same PR as the code they cover**, so `main` never has untested rules. Put them in their own commit if that makes the diff easier to read.
+- **Commits inside a PR:** each commit does one thing and leaves the repo passing `pnpm typecheck`, `pnpm lint`, and the relevant tests. Separate refactors and renames from behavior changes.
+- **PR description:** what this ticket does, what's left for later tickets, and how to verify it.
+
 ## Commands
 
 pnpm workspaces + Turborepo. The Supabase CLI is a root devDependency (`pnpm supabase …`). Local Supabase needs Docker, and on Windows Docker Desktop needs WSL 2.
