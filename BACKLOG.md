@@ -3,7 +3,7 @@
 Working list of tickets and open questions. The product spec is [riff-lab-plan.md](riff-lab-plan.md); this file tracks how we get there.
 
 - Each ticket is about 3–5 story points and one PR (see [CLAUDE.md](CLAUDE.md), "Work in small chunks").
-- When a ticket is done, mark it `[x]` and add its commit or PR.
+- When a ticket is done, mark it `[x]` in the same commit, and add its PR number once it has one.
 - When an open question is answered, record the decision in the spec (or in code, if it's purely technical) and delete it here.
 
 ## Current: Phase 1 foundation
@@ -13,7 +13,7 @@ Rebuilding the initial scaffold in small, reviewable commits on `stub-refactor`.
 - [x] **1. Workspace skeleton:** pnpm workspaces, Turborepo, shared tsconfig, ESLint, Prettier (`88c31d1`)
 - [x] **2. CI:** GitHub Actions for format, typecheck, lint, and tests (`77b8595`)
 - [x] **3. Username schema:** `@riff-lab/core` with `usernameSchema` and tests (`6b08ad7`)
-- [ ] **4. Age check:** `isAdult` and tests
+- [x] **4. Age check:** `isAdult` and tests
 - [ ] **5. Supabase setup:** CLI, config, empty seed, pgTAP helpers, schema guard tests, CI database job
 - [ ] **6. Profiles table:** table, constraints, RLS, column-level grants, pgTAP tests, `limits.ts`
 - [ ] **7. Onboarding RPC:** `complete_onboarding` with the 18+ check, tests, seed data
