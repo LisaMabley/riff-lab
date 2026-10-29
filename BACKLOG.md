@@ -31,6 +31,8 @@ From spec §17, Phase 1. Break each into tickets before starting it.
 - Feed: newest first, tag filter, remix count
 - Comments and one level of replies
 - Public tags with the blocked-words check
+  - Tag words are shared (stored once), but keep RLS on: use a read policy, never disable RLS.
+  - The read policy can't be `using (true)`. Per spec §8, a tag used only privately by someone else must never be visible to other users. Readers should see only tags used publicly somewhere, plus tags they used privately themselves. Decide between a read policy and an autocomplete RPC when we get here.
 - Blocking
 - Simple reporting
 - Remix and comment notifications (in-app)
