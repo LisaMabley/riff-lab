@@ -1,0 +1,2 @@
+-- Local development data. Runs after migrations on `supabase db reset`.
+-- Empty until there are tables to seed.
