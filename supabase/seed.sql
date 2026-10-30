@@ -1,5 +1,6 @@
 -- Local development data. Runs after migrations on `supabase db reset`.
--- Three users who have completed onboarding.
+-- Three users who have completed onboarding. They have no auth identities yet, so they can't
+-- sign in. That comes with the sign-in ticket.
 
 insert into auth.users (
   id, instance_id, aud, role, email, encrypted_password, email_confirmed_at,

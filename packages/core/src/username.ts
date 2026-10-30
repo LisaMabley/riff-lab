@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-// Mirrors the profiles_username_format check: stored lowercase, so uniqueness is case-insensitive.
+// Mirrors the database's username check (coming with the profiles table). Usernames are stored
+// lowercase, so uniqueness is case-insensitive. The spec doesn't define these rules yet.
 export const USERNAME_PATTERN = /^[a-z0-9_.]{3,30}$/;
 
 export const usernameSchema = z

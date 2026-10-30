@@ -26,7 +26,14 @@ describe('isAdult', () => {
     expect(isAdult('2026-03-01', '2044-02-29')).toBe(false);
   });
 
-  it('rejects malformed dates', () => {
-    expect(() => isAdult('10/17/2008', '2026-10-17')).toThrow();
+  it.each(['10/17/2008', '2008-2-1', '2008-02-30', '2007-02-29', '2008-13-01', '2008-00-10', ''])(
+    'rejects birth date %j',
+    (birthDate) => {
+      expect(() => isAdult(birthDate, '2026-10-17')).toThrow();
+    },
+  );
+
+  it('rejects an invalid today', () => {
+    expect(() => isAdult('2008-10-17', '2026-02-30')).toThrow();
   });
 });

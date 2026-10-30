@@ -4,6 +4,7 @@
 --
 -- Usage in a test:
 --   select tests.create_profile('maya');   -- as the default superuser, during setup
+--   select tests.create_user('maya');      -- a user without a profile
 --   select tests.authenticate_as('maya');  -- act as Maya (role authenticated + JWT claims)
 --   select tests.authenticate_as_anon();   -- act as a signed-out visitor
 --   select tests.as_superuser();           -- back to the test runner's role
@@ -44,7 +45,7 @@ as $$
   select id from auth.users where email = p_identifier || '@tests.local';
 $$;
 
--- A user who has completed onboarding. The identifier doubles as the username.
+-- A user who has completed onboarding. The identifier doubles as the username and display name.
 create or replace function tests.create_profile(p_identifier text)
 returns uuid
 language plpgsql

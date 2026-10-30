@@ -13,6 +13,7 @@ Phase 1 (invite-only friends beta) is in progress. So far: the database foundati
 Lisa reviews every change, so size work like a team ticket: about 3–5 story points, roughly a day or two of focused work.
 
 - **PR size:** aim for 400 changed lines or fewer. Treat 800 as the ceiling. Generated files (`database.types.ts`), lockfiles, and snapshots don't count toward the limit. Call them out in the PR description instead.
+- **Backlog:** [BACKLOG.md](BACKLOG.md) is the ticket list and the home for open questions that come up while building. Mark tickets done as they land, and add new questions there instead of guessing.
 - **Plan first:** before starting a feature, break it into tickets, each one small enough to fit the limit and useful on its own. Propose the list and let Lisa approve it before writing code. If a ticket turns out bigger than expected while you're building it, stop and propose a split. Don't keep going.
 - **Slice vertically:** each PR should be a thin, complete piece, for example one table with its RLS, grants, and pgTAP tests. Avoid layers that don't work yet ("all the migrations now, all the policies later").
 - **Tests stay in the same PR as the code they cover**, so `main` never has untested rules. Put them in their own commit if that makes the diff easier to read.
@@ -31,7 +32,7 @@ pnpm format                                 # prettier (supabase/ and *.md are i
 pnpm db:start        # local Supabase stack (Studio URL etc. via `pnpm supabase status`)
 pnpm db:reset        # re-apply migrations + supabase/seed.sql
 pnpm test:db         # all pgTAP tests (supabase test db)
-pnpm db:types        # regenerate packages/supabase/src/database.types.ts (currently a placeholder)
+pnpm db:types        # regenerate packages/supabase/src/database.types.ts after changing a migration
 
 # single tests
 pnpm --filter @riff-lab/core exec vitest run src/age.test.ts

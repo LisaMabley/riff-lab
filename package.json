@@ -15,15 +15,15 @@
     "db:start": "supabase start",
     "db:stop": "supabase stop",
     "db:reset": "supabase db reset",
-    "db:types": "supabase gen types typescript --local > packages/supabase/src/database.types.ts && prettier --write packages/supabase/src/database.types.ts",
-    "test:db": "supabase test db"
+    "test:db": "supabase test db",
+    "db:types": "supabase gen types typescript --local > packages/supabase/src/database.types.ts && prettier --write packages/supabase/src/database.types.ts"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "eslint": "10.13.0",
     "globals": "17.13.0",
     "prettier": "3.9.10",
-    "supabase": "2.121.0",
+    "supabase": "2.122.0",
     "turbo": "2.11.9",
     "typescript": "6.0.3",
     "typescript-eslint": "8.71.2"

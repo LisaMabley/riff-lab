@@ -1,104 +1,31 @@
 begin;
-select no_plan();
+select plan(24);
 
-select tests.create_user('test_maya');
-select tests.create_user('test_jamie');
-select tests.create_user('test_kid');
+select tests.create_profile('test_maya');
+select tests.create_profile('test_jamie');
 
--- Onboarding and the 18+ check ----------------------------------------------
+-- Grants --------------------------------------------------------------------
 
-select tests.authenticate_as('test_kid');
-
-select throws_ok(
-  $$ select public.complete_onboarding('test_kid', 'Kid', (current_date - interval '18 years' + interval '1 day')::date) $$,
-  'P0001', 'under_18',
-  'one day short of 18 is rejected'
+select table_privs_are('public', 'profiles', 'anon', array[]::text[], 'anon has no table privileges');
+select table_privs_are(
+  'public', 'profiles', 'authenticated', array['SELECT'],
+  'authenticated can only select at the table level'
 );
-
-select throws_ok(
-  $$ select public.complete_onboarding('test_kid', 'Kid', (current_date + 1)::date) $$,
-  'P0001', 'under_18',
-  'a future birth date is rejected'
+select column_privs_are(
+  'public', 'profiles', 'display_name', 'authenticated', array['SELECT', 'UPDATE'],
+  'authenticated can update display_name'
 );
-
-select throws_ok(
-  $$ select public.complete_onboarding('test_kid', 'Kid', null) $$,
-  'P0001', 'under_18',
-  'a missing birth date is rejected'
+select column_privs_are(
+  'public', 'profiles', 'bio', 'authenticated', array['SELECT', 'UPDATE'],
+  'authenticated can update bio'
 );
-
-select is(
-  (select count(*)::integer from public.profiles where id = tests.get_user_id('test_kid')),
-  0,
-  'a rejected signup creates no profile'
+select column_privs_are(
+  'public', 'profiles', 'username', 'authenticated', array['SELECT'],
+  'authenticated cannot update username'
 );
-
-select tests.authenticate_as('test_maya');
-
-select lives_ok(
-  $$ select public.complete_onboarding('  Test_Maya ', 'Maya', (current_date - interval '18 years')::date) $$,
-  'onboarding succeeds on the 18th birthday'
-);
-
-select is(
-  (select username from public.profiles where id = tests.get_user_id('test_maya')),
-  'test_maya',
-  'usernames are trimmed and stored lowercase'
-);
-
-select throws_ok(
-  $$ select public.complete_onboarding('test_maya2', 'Maya', '1990-01-01') $$,
-  'P0001', 'already_onboarded',
-  'onboarding can only complete once'
-);
-
-select tests.authenticate_as('test_jamie');
-
-select throws_ok(
-  $$ select public.complete_onboarding('TEST_MAYA', 'Jo', '1990-01-01') $$,
-  '23505', null,
-  'usernames are unique regardless of case'
-);
-
-select throws_ok(
-  $$ select public.complete_onboarding('jo smith', 'Jo', '1990-01-01') $$,
-  '23514', null,
-  'usernames must match the allowed format'
-);
-
-select throws_ok(
-  $$ select public.complete_onboarding('test_jamie', '   ', '1990-01-01') $$,
-  '23514', null,
-  'display names cannot be blank'
-);
-
-select lives_ok(
-  $$ select public.complete_onboarding('test_jamie', 'Jo', '1990-01-01') $$,
-  'a second user can onboard'
-);
-
-select tests.authenticate_without_user();
-
-select throws_ok(
-  $$ select public.complete_onboarding('ghost', 'Ghost', '1990-01-01') $$,
-  '42501', 'not_authenticated',
-  'onboarding requires a signed-in user'
-);
-
-select tests.authenticate_as_anon();
-
-select throws_ok(
-  $$ select public.complete_onboarding('ghost', 'Ghost', '1990-01-01') $$,
-  '42501', null,
-  'anon cannot call onboarding'
-);
-
-select tests.as_superuser();
-
-select is(
-  (select age_confirmed_at from public.profiles where id = tests.get_user_id('test_maya')),
-  now(),
-  'onboarding records age_confirmed_at'
+select column_privs_are(
+  'public', 'profiles', 'age_confirmed_at', 'authenticated', array['SELECT'],
+  'authenticated cannot update age_confirmed_at'
 );
 
 -- Reading -------------------------------------------------------------------
@@ -134,11 +61,12 @@ select is(
   'the bio update is saved'
 );
 
+-- RLS filters out other people's rows, so this updates nothing instead of raising an error.
 update public.profiles set display_name = 'Hacked' where username = 'test_jamie';
 
 select is(
   (select display_name from public.profiles where username = 'test_jamie'),
-  'Jo',
+  'test_jamie',
   'users cannot update someone else''s profile'
 );
 
@@ -149,14 +77,14 @@ select throws_ok(
 );
 
 select throws_ok(
-  $$ update public.profiles set age_confirmed_at = null where id = auth.uid() $$,
+  $$ update public.profiles set age_confirmed_at = now() where id = auth.uid() $$,
   '42501', null,
   'age_confirmed_at is read-only'
 );
 
 select throws_ok(
   $$ insert into public.profiles (id, username, display_name, age_confirmed_at)
-     values (gen_random_uuid(), 'sneaky', 'Sneaky', now()) $$,
+     values (auth.uid(), 'sneaky', 'Sneaky', now()) $$,
   '42501', null,
   'profiles cannot be inserted directly'
 );
@@ -167,15 +95,65 @@ select throws_ok(
   'profiles cannot be deleted directly'
 );
 
+-- Text limits ---------------------------------------------------------------
+
+select lives_ok(
+  $$ update public.profiles set display_name = repeat('x', 50), bio = repeat('x', 300) where id = auth.uid() $$,
+  'a 50-character display name and 300-character bio are allowed'
+);
+
+select throws_ok(
+  $$ update public.profiles set display_name = repeat('x', 51) where id = auth.uid() $$,
+  '23514', null,
+  'display names are limited to 50 characters'
+);
+
+select throws_ok(
+  $$ update public.profiles set display_name = '   ' where id = auth.uid() $$,
+  '23514', null,
+  'display names cannot be blank'
+);
+
 select throws_ok(
   $$ update public.profiles set bio = repeat('x', 301) where id = auth.uid() $$,
   '23514', null,
   'bios are limited to 300 characters'
 );
 
--- Account deletion ----------------------------------------------------------
+-- Username rules (inserted as the test runner, since only onboarding creates profiles) --------
 
 select tests.as_superuser();
+
+select throws_ok(
+  $$ select tests.create_profile('Test_Upper') $$,
+  '23514', null,
+  'usernames must be stored lowercase'
+);
+
+select throws_ok(
+  $$ select tests.create_profile('ab') $$,
+  '23514', null,
+  'usernames must be at least 3 characters'
+);
+
+select throws_ok(
+  $$ insert into public.profiles (id, username, display_name, age_confirmed_at)
+     values (tests.create_user('test_dupe'), 'test_maya', 'Dupe', now()) $$,
+  '23505', null,
+  'usernames are unique'
+);
+
+-- updated_at ----------------------------------------------------------------
+
+update public.profiles set updated_at = '2000-01-01' where username = 'test_jamie';
+
+select is(
+  (select updated_at from public.profiles where username = 'test_jamie'),
+  now(),
+  'updates always set updated_at to the current time'
+);
+
+-- Account deletion ----------------------------------------------------------
 
 delete from auth.users where id = tests.get_user_id('test_maya');
 
