@@ -1,6 +1,6 @@
 # Riff Lab — Project Plan
 
-_Updated 2026-10-29_
+_Updated 2026-10-30_
 
 ## 1. Overview
 
@@ -319,6 +319,17 @@ _Goal: everything required to open to the public and pass App Store review._
 6. Terms of service, privacy policy, DMCA agent and takedown process.
 7. Push notifications for remixes, batched.
 
+### Phase 4 — After launch
+
+_Goal: gather posts of public figures who aren't members into style reference pages (section 20). Not part of the MVP. Start once members are actually posting these looks, and after the legal review._
+
+1. `people`, `post_people`, and `person_links` tables with RLS.
+2. Name and source link at upload, with simple name autocomplete.
+3. Style reference pages, opened by tapping a person's name on a post.
+4. Moderator tool to review and merge duplicate people, plus a way to request a page's removal.
+
+Claiming a page, identity verification, and automatic matching come later still.
+
 ## 18. Success milestones
 
 Each step matters once the previous one is happening:
@@ -355,12 +366,12 @@ Possible later metrics, once there's a real user base: share of posts that are r
 - Per-post controls for applause, comments, and remixing; private posts
 - Appeals and strike systems; automated moderation; moderator roles and queues
 - Expanding beyond the US
-- Style reference pages for public figures who aren't members (see below)
+- Style reference pages for public figures who aren't members (see below; planned for Phase 4, section 17)
 - Creator communities and challenges, creator tools or services, optional paid features, open social protocols. Core participation should stay accessible. Business model and open-source vs. commercial direction are undecided.
 
 ### Style reference pages (people who aren't members)
 
-_Added 2026-10-29. Not MVP. Recorded here so that MVP choices don't rule it out._
+_Added 2026-10-29. Not MVP; planned for Phase 4 (section 17). Recorded here so that MVP choices don't rule it out._
 
 Members may post photos of looks worn by public figures (celebrities, influencers, a favorite comedian) who aren't on Riff Lab. Later, posts that show the same person could be gathered on a **style reference page**: that person's looks plus the remixes they inspired. Treat these outfits as starting points for interpretation, not ideals to copy. The interesting part is how a look changes as people remix it, including cheaper, more accessible, more personal, or completely different versions. Celebrity looks should add to the remix network, not dominate it.
 
@@ -391,7 +402,7 @@ Members may post photos of looks worn by public figures (celebrities, influencer
 - Uploaders are responsible for having the rights or legal basis to post. Encourage source URLs and photographer credit, but credit isn't permission.
 - Builds on the DMCA process in §14 (designated agent, counter-notice, repeat-infringer policy). Get a legal review before the public launch.
 
-**Deferred until after the MVP:** the pages themselves, claiming and identity verification, automatic matching, merging duplicates, and name autocomplete. What the MVP collects at upload is an open question (§19).
+**Deferred until after the MVP:** the pages themselves, merging duplicates, and name autocomplete go in Phase 4. Claiming, identity verification, and automatic matching come after that. What the MVP collects at upload is an open question (§19).
 
 ## 21. Visual direction
 
