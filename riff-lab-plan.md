@@ -1,6 +1,6 @@
 # Riff Lab — Project Plan
 
-_Updated 2026-10-17_
+_Updated 2026-10-29_
 
 ## 1. Overview
 
@@ -336,6 +336,11 @@ Possible later metrics, once there's a real user base: share of posts that are r
 - Profile fields (display name, pronouns, bio, profile tags, links?).
 - Search scope: tags only, or also usernames and post text?
 - Text limits for posts, comments, and tags.
+- **"Who is in this photo?" at upload** (Me / Someone else / AI-generated / Unknown). Proposed 2026-10-29 so that style reference pages (§20) stay possible later. Not yet in the MVP spec. Undecided:
+  - whether it's in the MVP, and in which phase;
+  - per post or per image (AI labels are per image, §10), and how its "AI-generated" option relates to the AI toggle;
+  - whether to collect a name and source link for "Someone else," given that §4 puts external links out of scope;
+  - how to avoid storing the names of private people who aren't members (a friend in the photo, not a public figure).
 
 ## 20. Later (not MVP)
 
@@ -350,7 +355,43 @@ Possible later metrics, once there's a real user base: share of posts that are r
 - Per-post controls for applause, comments, and remixing; private posts
 - Appeals and strike systems; automated moderation; moderator roles and queues
 - Expanding beyond the US
+- Style reference pages for public figures who aren't members (see below)
 - Creator communities and challenges, creator tools or services, optional paid features, open social protocols. Core participation should stay accessible. Business model and open-source vs. commercial direction are undecided.
+
+### Style reference pages (people who aren't members)
+
+_Added 2026-10-29. Not MVP. Recorded here so that MVP choices don't rule it out._
+
+Members may post photos of looks worn by public figures (celebrities, influencers, a favorite comedian) who aren't on Riff Lab. Later, posts that show the same person could be gathered on a **style reference page**: that person's looks plus the remixes they inspired. Treat these outfits as starting points for interpretation, not ideals to copy. The interesting part is how a look changes as people remix it, including cheaper, more accessible, more personal, or completely different versions. Celebrity looks should add to the remix network, not dominate it.
+
+**Pages**
+
+- Call them "style reference pages," never profiles or unclaimed accounts.
+- Show the person's name and say clearly that they aren't a Riff Lab member. Nothing may imply that they take part in or endorse Riff Lab.
+- Contents: posts showing the person, remixes of those posts, external links, attribution.
+- Later, the person can verify their identity and either connect the page to their own account or ask for it to be removed. Removal requests are separate from copyright complaints.
+
+**Data model direction** (a concept, not an approved migration)
+
+- People are entities, not tags. **Tags describe the look, people identify who's in it, and remix links record creative influence.** Keep all three separate.
+- Sketch: `people` (id, display_name, slug, claimed_by_user_id nullable, status), `post_people` (post_id, person_id), `person_links` (person_id, url, type). The nullable claim column can link a page to a real account later, so no account is ever created on someone's behalf.
+
+**Matching and merging**
+
+- Posts can be matched to the same person through attribution links, such as an official Instagram profile or a personal website. Different links can point to the same person, so moderators need a tool to review and merge records.
+- Never merge records automatically because a name matches or a source URL is ambiguous.
+
+**Navigation**
+
+- Tapping a person's name on a post opens their page, and uploading offers simple name autocomplete. Neither needs general text search, and people never become tags just so they can be searched.
+
+**Copyright**
+
+- Pinterest is the model: members can post inspiration photos they didn't take, backed by a takedown process ([Pinterest copyright policy](https://policy.pinterest.com/en/copyright)).
+- Uploaders are responsible for having the rights or legal basis to post. Encourage source URLs and photographer credit, but credit isn't permission.
+- Builds on the DMCA process in §14 (designated agent, counter-notice, repeat-infringer policy). Get a legal review before the public launch.
+
+**Deferred until after the MVP:** the pages themselves, claiming and identity verification, automatic matching, merging duplicates, and name autocomplete. What the MVP collects at upload is an open question (§19).
 
 ## 21. Visual direction
 

@@ -27,6 +27,7 @@ From spec §17, Phase 1. Break each into tickets before starting it.
 - Sign-in: email code, Apple, Google
 - Image processing check on Edge Functions
 - Image posts: upload, EXIF stripping, resizing, reordering, alt text
+  - Settle the spec §19 "Who is in this photo?" question before splitting this. The answer decides whether posts get a subject field and, if names and links are collected, where that attribution lives (see §20, "Style reference pages").
 - Remixes: "remixed from" link, 24-hour rule, remixes on the original, placeholder card
 - Feed: newest first, tag filter, remix count
 - Comments and one level of replies
