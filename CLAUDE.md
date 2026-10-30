@@ -13,12 +13,13 @@ Phase 1 (invite-only friends beta) is in progress. So far: the database foundati
 Lisa reviews every change, so size work like a team ticket: about 3–5 story points, roughly a day or two of focused work.
 
 - **PR size:** aim for 400 changed lines or fewer. Treat 800 as the ceiling. Generated files (`database.types.ts`), lockfiles, and snapshots don't count toward the limit. Call them out in the PR description instead.
-- **Backlog:** [BACKLOG.md](BACKLOG.md) is the ticket list and the home for open questions that come up while building. Mark tickets done as they land, and add new questions there instead of guessing.
+- **Backlog:** [GitHub Issues](https://github.com/LisaMabley/riff-lab/issues) is the ticket list and the home for open questions that come up while building. Milestones are the spec's phases. Ask new questions in an issue with the `question` label instead of guessing, and record the answer in the spec (or in code, if it's purely technical) before closing it. Create issues for a later phase when that phase starts.
+- **Docs-only changes** (`riff-lab-plan.md`, `README.md`, this file) commit straight to `main`, with no branch or PR. Code always goes through a PR.
 - **Plan first:** before starting a feature, break it into tickets, each one small enough to fit the limit and useful on its own. Propose the list and let Lisa approve it before writing code. If a ticket turns out bigger than expected while you're building it, stop and propose a split. Don't keep going.
 - **Slice vertically:** each PR should be a thin, complete piece, for example one table with its RLS, grants, and pgTAP tests. Avoid layers that don't work yet ("all the migrations now, all the policies later").
 - **Tests stay in the same PR as the code they cover**, so `main` never has untested rules. Put them in their own commit if that makes the diff easier to read.
 - **Commits inside a PR:** each commit does one thing and leaves the repo passing `pnpm typecheck`, `pnpm lint`, and the relevant tests. Separate refactors and renames from behavior changes.
-- **PR description:** what this ticket does, what's left for later tickets, and how to verify it.
+- **PR description:** what this ticket does, what's left for later tickets, and how to verify it. Include `Closes #N` so the ticket closes when the PR merges.
 
 ## Commands
 

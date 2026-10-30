@@ -8,7 +8,7 @@ The full product and architecture spec is [riff-lab-plan.md](riff-lab-plan.md). 
 
 **Phase 1, an invite-only friends beta, is in progress.** The spec splits the build into phases (§17).
 
-[BACKLOG.md](BACKLOG.md) has the current tickets and open questions.
+[GitHub Issues](https://github.com/LisaMabley/riff-lab/issues) has the current tickets and open questions.
 
 ## Tech stack
 
