@@ -46,6 +46,12 @@ importers:
         specifier: 5.0.5
         version: 5.0.5(vite@8.3.5)
 
+  packages/supabase:
+    devDependencies:
+      '@riff-lab/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+
   packages/tsconfig: {}
 
 packages:

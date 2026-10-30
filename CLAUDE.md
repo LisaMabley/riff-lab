@@ -32,7 +32,7 @@ pnpm format                                 # prettier (supabase/ and *.md are i
 pnpm db:start        # local Supabase stack (Studio URL etc. via `pnpm supabase status`)
 pnpm db:reset        # re-apply migrations + supabase/seed.sql
 pnpm test:db         # all pgTAP tests (supabase test db)
-pnpm db:types        # regenerate packages/supabase/src/database.types.ts (currently a placeholder)
+pnpm db:types        # regenerate packages/supabase/src/database.types.ts after changing a migration
 
 # single tests
 pnpm --filter @riff-lab/core exec vitest run src/age.test.ts

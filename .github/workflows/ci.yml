@@ -33,3 +33,6 @@ jobs:
       # Only Postgres is needed for pgTAP; this applies migrations and the seed.
       - run: pnpm supabase db start
       - run: pnpm test:db
+      # Fails if a migration changed without regenerating the types.
+      - run: pnpm db:types
+      - run: git diff --exit-code packages/supabase/src/database.types.ts
