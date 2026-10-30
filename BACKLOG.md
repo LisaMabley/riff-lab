@@ -14,7 +14,7 @@ Rebuilding the initial scaffold in small, reviewable commits on `stub-refactor`.
 - [x] **2. CI:** GitHub Actions for format, typecheck, lint, and tests (`77b8595`)
 - [x] **3. Username schema:** `@riff-lab/core` with `usernameSchema` and tests (`6b08ad7`)
 - [x] **4. Age check:** `isAdult` and tests
-- [ ] **5. Supabase setup:** CLI, config, empty seed, pgTAP helpers, schema guard tests, CI database job
+- [x] **5. Supabase setup:** CLI, config, empty seed, pgTAP helpers, schema guard tests, CI database job
 - [ ] **6. Profiles table:** table, constraints, RLS, column-level grants, pgTAP tests, `limits.ts`
 - [ ] **7. Onboarding RPC:** `complete_onboarding` with the 18+ check, tests, seed data
 - [ ] **8. Generated types:** `packages/supabase` with `database.types.ts`
