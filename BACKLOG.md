@@ -16,7 +16,7 @@ Rebuilding the initial scaffold in small, reviewable commits on `stub-refactor`.
 - [x] **4. Age check:** `isAdult` and tests
 - [x] **5. Supabase setup:** CLI, config, empty seed, pgTAP helpers, schema guard tests, CI database job
 - [x] **6. Profiles table:** table, constraints, RLS, column-level grants, pgTAP tests, `limits.ts`
-- [ ] **7. Onboarding RPC:** `complete_onboarding` with the 18+ check, tests, seed data
+- [x] **7. Onboarding RPC:** `complete_onboarding` with the 18+ check, tests, seed data
 - [ ] **8. Generated types:** `packages/supabase` with `database.types.ts`
 
 ## Later in Phase 1 (not yet split into tickets)
