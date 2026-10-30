@@ -15,7 +15,7 @@ Rebuilding the initial scaffold in small, reviewable commits on `stub-refactor`.
 - [x] **3. Username schema:** `@riff-lab/core` with `usernameSchema` and tests (`6b08ad7`)
 - [x] **4. Age check:** `isAdult` and tests
 - [x] **5. Supabase setup:** CLI, config, empty seed, pgTAP helpers, schema guard tests, CI database job
-- [ ] **6. Profiles table:** table, constraints, RLS, column-level grants, pgTAP tests, `limits.ts`
+- [x] **6. Profiles table:** table, constraints, RLS, column-level grants, pgTAP tests, `limits.ts`
 - [ ] **7. Onboarding RPC:** `complete_onboarding` with the 18+ check, tests, seed data
 - [ ] **8. Generated types:** `packages/supabase` with `database.types.ts`
 
@@ -52,4 +52,10 @@ The spec doesn't define these. Current placeholder: 3–30 characters, `a-z`, `0
 
 ### Display name and bio limits
 
-Placeholders: display name 50 characters, bio 300. These depend on §19 "Profile fields" and "Text limits." They arrive in ticket 6.
+Placeholders: display name 50 characters, bio 300. These depend on §19 "Profile fields" and "Text limits." Set in the profiles migration and [limits.ts](packages/core/src/limits.ts).
+
+### Who can see profiles
+
+Currently only signed-in users can read profiles. Spec §15 says the web app lets people browse the feed and view posts, but not whether signed-out visitors can. If they can, profiles (and later posts) need an `anon` read policy.
+
+When blocking lands, the read policy must also hide profiles between blocked users (spec §13).
