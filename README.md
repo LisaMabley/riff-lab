@@ -1,14 +1,14 @@
-# Riff Lab
+# Riffit
 
-Riff Lab (working name) is a fashion community built on **remixes**. Someone posts a look or styling idea, others post their own versions of it, and those remixes can be remixed in turn. The remix network is the product. It values creativity and participation over popularity: the only public number is a post's remix count.
+Riffit (working name) is a fashion community built on **remixes**. Someone posts a look or styling idea, others post their own versions of it, and those remixes can be remixed in turn. The remix network is the product. It values creativity and participation over popularity: the only public number is a post's remix count.
 
-The full product and architecture spec is [riff-lab-plan.md](riff-lab-plan.md). Read the relevant section before building a feature.
+The full product and architecture spec is [riffit-plan.md](riffit-plan.md). Read the relevant section before building a feature.
 
 ## Status
 
 **Phase 1, an invite-only friends beta, is in progress.** The spec splits the build into phases (§17).
 
-[GitHub Issues](https://github.com/LisaMabley/riff-lab/issues) has the current tickets and open questions.
+[GitHub Issues](https://github.com/LisaMabley/riffit/issues) has the current tickets and open questions.
 
 ## Tech stack
 

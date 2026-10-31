@@ -1,14 +1,14 @@
-# Riff Lab — Project Plan
+# Riffit — Project Plan
 
 _Updated 2026-10-30_
 
 ## 1. Overview
 
-Riff Lab is a fashion community built around inspiration, interpretation, and creative response. Someone posts a look or styling idea; others make their own versions (**remixes**), which can inspire more remixes. The resulting network of ideas and interpretations is the core experience.
+Riffit is a fashion community built around inspiration, interpretation, and creative response. Someone posts a look or styling idea; others make their own versions (**remixes**), which can inspire more remixes. The resulting network of ideas and interpretations is the core experience.
 
 The product focuses on fashion and personal style. Expanding into other creative fields can wait.
 
-- **App name:** undecided. Riff Lab is the working name; Riff Collective is another candidate.
+- **App name:** undecided. Riffit is the working name; Riff Collective is another candidate.
 - **Action word:** "remix" (button: _Remix this_; count: _12 remixes_; attribution: _remixed from @maya_). Chosen independently of the app name. Alternatives considered: riff, take, spin.
 
 ## 2. Product principles
@@ -206,7 +206,7 @@ _Not legal advice. Have someone qualified review before the public launch._
 
 - **Minimum age:** 18+, with birth date entered at signup. The birth date is checked and discarded; only the time of the age check (`age_confirmed_at`) is stored.
 - **Region:** US only. App store listings are US only; the terms say US users (web can't strictly block other regions).
-- **Terms of service and privacy policy:** start from a reputable template, then add the Riff Lab specifics:
+- **Terms of service and privacy policy:** start from a reputable template, then add the Riffit specifics:
   - by posting, you allow others to make and post their own interpretations (remixes) of your look
   - the private-tag promise: the platform sees tag words, not who used them
   - location data is removed from photos
@@ -336,7 +336,7 @@ Each step matters once the previous one is happening:
 
 1. **People show up:** someone invited signs up and makes a post.
 2. **People remix:** someone remixes a post without being asked.
-3. **Strangers connect:** someone remixes a post by someone they don't know personally. _This is the real signal that Riff Lab works._
+3. **Strangers connect:** someone remixes a post by someone they don't know personally. _This is the real signal that Riffit works._
 4. **People come back:** someone posts a second time without being reminded.
 
 Possible later metrics, once there's a real user base: share of posts that are remixes; share of originals remixed within 30 days; chains 3+ levels deep; 2-week return rate.
@@ -373,12 +373,12 @@ Possible later metrics, once there's a real user base: share of posts that are r
 
 _Added 2026-10-29. Not MVP; planned for Phase 4 (section 17). Recorded here so that MVP choices don't rule it out._
 
-Members may post photos of looks worn by public figures (celebrities, influencers, a favorite comedian) who aren't on Riff Lab. Later, posts that show the same person could be gathered on a **style reference page**: that person's looks plus the remixes they inspired. Treat these outfits as starting points for interpretation, not ideals to copy. The interesting part is how a look changes as people remix it, including cheaper, more accessible, more personal, or completely different versions. Celebrity looks should add to the remix network, not dominate it.
+Members may post photos of looks worn by public figures (celebrities, influencers, a favorite comedian) who aren't on Riffit. Later, posts that show the same person could be gathered on a **style reference page**: that person's looks plus the remixes they inspired. Treat these outfits as starting points for interpretation, not ideals to copy. The interesting part is how a look changes as people remix it, including cheaper, more accessible, more personal, or completely different versions. Celebrity looks should add to the remix network, not dominate it.
 
 **Pages**
 
 - Call them "style reference pages," never profiles or unclaimed accounts.
-- Show the person's name and say clearly that they aren't a Riff Lab member. Nothing may imply that they take part in or endorse Riff Lab.
+- Show the person's name and say clearly that they aren't a Riffit member. Nothing may imply that they take part in or endorse Riffit.
 - Contents: posts showing the person, remixes of those posts, external links, attribution.
 - Later, the person can verify their identity and either connect the page to their own account or ask for it to be removed. Removal requests are separate from copyright complaints.
 
