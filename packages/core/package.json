@@ -1,5 +1,5 @@
 {
-  "name": "@riff-lab/core",
+  "name": "@riffit/core",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -15,7 +15,7 @@
     "zod": "4.6.7"
   },
   "devDependencies": {
-    "@riff-lab/tsconfig": "workspace:*",
+    "@riffit/tsconfig": "workspace:*",
     "vitest": "5.0.5"
   }
 }

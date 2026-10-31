@@ -1,4 +1,4 @@
 {
-  "extends": ["expo/tsconfig.base", "@riff-lab/tsconfig/base.json"],
+  "extends": ["expo/tsconfig.base", "@riffit/tsconfig/base.json"],
   "include": ["src"]
 }
