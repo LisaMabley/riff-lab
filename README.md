@@ -15,7 +15,7 @@ The full product and architecture spec is [riff-lab-plan.md](riff-lab-plan.md). 
 - **TypeScript** throughout, in a **pnpm workspaces + Turborepo** monorepo
 - **Supabase**: Postgres, auth, and storage. Most product rules live in the database as constraints, triggers, and RLS policies.
 - **pgTAP** for database tests and **Vitest** for TypeScript packages
-- **Expo** (React Native) for the mobile app, and a web app later. Neither exists yet.
+- **Expo** (React Native) for the mobile app, and a web app later. The mobile app is a scaffold so far.
 
 ## Getting started
 
@@ -49,6 +49,7 @@ The seed creates three users who have finished onboarding: `maya`, `jo.makes`, a
 | `pnpm lint` | ESLint across packages |
 | `pnpm test` | Vitest across packages |
 | `pnpm format` / `pnpm format:check` | Formats with Prettier, or checks formatting. Skips `supabase/` and Markdown. |
+| `pnpm --filter @riff-lab/mobile start` | Starts the Expo dev server. Scan the QR code with Expo Go on a phone on the same Wi-Fi. On an iPhone, sign in to the same Expo account in Expo Go and with `npx expo login --no-browser` first (the default browser login crashes on Windows in Expo CLI 58.1.17). |
 | `pnpm db:start` / `pnpm db:stop` | Starts or stops local Supabase |
 | `pnpm db:reset` | Recreates the local database from migrations and the seed |
 | `pnpm test:db` | Runs all pgTAP tests (`supabase test db`) |

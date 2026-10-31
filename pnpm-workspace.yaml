@@ -2,6 +2,10 @@ packages:
   - apps/*
   - packages/*
 
+# What create-expo-app generates for pnpm. Expo warns that some React Native libraries fail with
+# pnpm's default isolated layout.
+nodeLinker: hoisted
+
 # The Supabase CLI package downloads its binary in a postinstall script.
 onlyBuiltDependencies:
   - supabase

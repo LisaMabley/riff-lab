@@ -6,7 +6,7 @@ Riff Lab (working name) is a fashion community built on **remixes**: someone pos
 
 ## Status
 
-Phase 1 (invite-only friends beta) is in progress. So far: the database foundation for users (profiles and the 18+ check), RLS, and tests. **Not started:** posts, images, and remixes; the Expo app (`apps/` is empty); sign-in; everything after that. Build phase by phase (§17), extending the schema with new migrations rather than modeling future phases up front. Check §4 "Out of scope" and §20 before adding anything.
+Phase 1 (invite-only friends beta) is in progress. So far: the database foundation for users (profiles and the 18+ check), RLS, and tests. The Expo app exists as a scaffold in `apps/mobile`. **Not started:** posts, images, and remixes; sign-in; everything after that. Build phase by phase (§17), extending the schema with new migrations rather than modeling future phases up front. Check §4 "Out of scope" and §20 before adding anything.
 
 ## Work in small chunks
 
@@ -35,6 +35,8 @@ pnpm db:reset        # re-apply migrations + supabase/seed.sql
 pnpm test:db         # all pgTAP tests (supabase test db)
 pnpm db:types        # regenerate packages/supabase/src/database.types.ts after changing a migration
 
+pnpm --filter @riff-lab/mobile start   # Expo dev server; scan the QR code with Expo Go
+
 # single tests
 pnpm --filter @riff-lab/core exec vitest run src/age.test.ts
 pnpm supabase test db supabase/tests/database/00010_profiles.test.sql
@@ -46,6 +48,7 @@ pnpm supabase test db supabase/tests/database/00010_profiles.test.sql
 
 - `supabase/migrations/`: the schema. This is where the product rules live (see below).
 - `supabase/tests/database/`: pgTAP, one file per area. Helpers: `tests.create_user`, `tests.create_profile`, `tests.authenticate_as(identifier)`, `tests.authenticate_as_anon`, `tests.authenticate_without_user`, `tests.as_superuser`. Test usernames must satisfy the 3–30 character rule.
+- `apps/mobile`: the Expo app (React Native, Expo Router). Routes live in `src/app/`. Add Expo and React Native libraries with `npx expo install` from this folder, not `pnpm add`, so versions match the SDK.
 - `packages/core`: framework-free domain helpers and zod schemas (username, `isAdult`, limits) that mirror database rules for client-side feedback. **The database is the source of truth.** When a rule or limit changes, change the migration, `packages/core/src/limits.ts`, and both test suites together.
 - `packages/supabase`: generated `Database` types for the future app.
 - `packages/tsconfig`: shared strict tsconfig. TypeScript is pinned to 6.0 because typescript-eslint doesn't support 7 yet.
