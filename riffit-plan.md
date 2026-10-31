@@ -4,29 +4,29 @@ _Updated 2026-10-30_
 
 ## 1. Overview
 
-Riffit is a fashion community built around inspiration, interpretation, and creative response. Someone posts a look or styling idea; others make their own versions (**remixes**), which can inspire more remixes. The resulting network of ideas and interpretations is the core experience.
+Riffit is a fashion community built around inspiration, interpretation, and creative response. Someone posts a look or styling idea; others make their own versions (**riffs**), which can inspire more riffs. The resulting network of ideas and interpretations is the core experience.
 
 The product focuses on fashion and personal style. Expanding into other creative fields can wait.
 
 - **App name:** undecided. Riffit is the working name; Riff Collective is another candidate.
-- **Action word:** "remix" (button: _Remix this_; count: _12 remixes_; attribution: _remixed from @maya_). Chosen independently of the app name. Alternatives considered: riff, take, spin.
+- **Action word:** "riff" (button: _Riff on this_; count: _12 riffs_; attribution: _riffed from @maya_). Chosen independently of the app name. Alternatives considered: remix, take, spin.
 
 ## 2. Product principles
 
 - Creativity and participation over popularity and passive scrolling.
 - Interpretation over imitation.
 - Meaningful interaction without public popularity contests.
-  - **Exception, on purpose:** remix counts are public, because they reward making something. Applause stays private.
+  - **Exception, on purpose:** riff counts are public, because they reward making something. Applause stays private.
 - Make room for different bodies, budgets, identities, abilities, modesty needs, and styles.
 - Treat safety and accessibility as part of the product.
 
-## 3. Posts and remixes
+## 3. Posts and riffs
 
-- A post has 1–6 images plus text, public tags, and an optional remix link.
-- A remix has exactly **one** "remixed from" post. Multiple inspirations are out of scope.
-- The remix link can be set or changed for **24 hours** after posting. After that it can only be removed.
-- The original post shows all its remixes together. Remixes can be remixed, forming branching chains.
-- **Remixes always survive their original.** When the original can't be shown, the "remixed from" spot shows a neutral placeholder card ("Original not available"):
+- A post has 1–6 images plus text, public tags, and an optional riff link.
+- A riff has exactly **one** "riffed from" post. Multiple inspirations are out of scope.
+- The riff link can be set or changed for **24 hours** after posting. After that it can only be removed.
+- The original post shows all its riffs together. Riffs can be riffed on, forming branching chains.
+- **Riffs always survive their original.** When the original can't be shown, the "riffed from" spot shows a neutral placeholder card ("Original not available"):
 
 | Why the original is gone | Who sees the placeholder |
 |---|---|
@@ -45,7 +45,7 @@ _This is the full MVP. It's built in three phases; see section 17 for what comes
 **In the core MVP**
 
 - Accounts (18+) and profiles
-- Image posts and remix relationships
+- Image posts and riff relationships
 - Feed with filters and sort
 - Public and private tags
 - Comments (one level of replies)
@@ -56,11 +56,11 @@ _This is the full MVP. It's built in three phases; see section 17 for what comes
 
 **Later in the MVP, after the core works**
 
-- Push notifications for remixes only, with batching
+- Push notifications for riffs only, with batching
 
 **Out of scope for the MVP**
 
-- Private posts; per-post controls to disable applause, comments, or remixing
+- Private posts; per-post controls to disable applause, comments, or riffing
 - Server-saved drafts, video
 - External images and links
 - Following or mutual friends; a public social graph
@@ -69,9 +69,9 @@ _This is the full MVP. It's built in three phases; see section 17 for what comes
 
 ## 5. Feed and discovery
 
-- **Default:** most recent first. Shows both original posts and remixes; remixes show "remixed from @someone."
-- **Sort options:** most recent, or most remixed over the last 30 / 60 / 90 days / all time (default 30).
-- **Remix count** shows on every post card and is hidden when it's zero.
+- **Default:** most recent first. Shows both original posts and riffs; riffs show "riffed from @someone."
+- **Sort options:** most recent, or most riffed on over the last 30 / 60 / 90 days / all time (default 30).
+- **Riff count** shows on every post card and is hidden when it's zero.
 - **Filters:**
   - Favorites only (new posts from favorited profiles)
   - Include tags: a post must have **all** of them (AND)
@@ -122,17 +122,17 @@ _This is the full MVP. It's built in three phases; see section 17 for what comes
 
 - Allowed when labeled. Labeling is **per image**: an "AI-generated" toggle on each image when posting.
 - Definition shown next to the toggle: "generated or substantially changed by AI." Ordinary filters, lighting fixes, and background blur don't count.
-- AI images show an AI icon in a corner everywhere they appear (feed, post view, "remixed from" previews). Screen readers announce "AI-generated image" before the alt text.
+- AI images show an AI icon in a corner everywhere they appear (feed, post view, "riffed from" previews). Screen readers announce "AI-generated image" before the alt text.
 - A post with any AI image counts as AI for filtering.
 - Shown by default. Onboarding offers a one-tap "Hide AI images."
-- AI images can be remixed. Each post is labeled by its own images.
+- AI images can be riffed on. Each post is labeled by its own images.
 - Moderators can add a missing AI label instead of removing the post.
 
 ## 11. Notifications
 
 In-app (a bell with a list) for:
 
-- Someone remixed your post
+- Someone riffed on your post
 - Someone commented on your post
 - Someone replied to your comment
 - A moderation action on your content (always on; can't be disabled)
@@ -144,14 +144,14 @@ In-app (a bell with a list) for:
 
 Each type except moderation notices can be switched off. No notifications for being favorited.
 
-**Later in the MVP:** push notifications for remixes only, batched.
+**Later in the MVP:** push notifications for riffs only, batched.
 
 ## 12. Editing and deletion
 
-- **Posts:** text and public tags can be edited at any time. Images can't be swapped. Posts can be deleted at any time; their remixes show the placeholder.
-- **Remix link:** set or changed within 24 hours of posting; after that, removable only.
+- **Posts:** text and public tags can be edited at any time. Images can't be swapped. Posts can be deleted at any time; their riffs show the placeholder.
+- **Riff link:** set or changed within 24 hours of posting; after that, removable only.
 - **Comments:** editable (marked "edited") and deletable by their author; deletable by the post owner.
-- **Account deletion:** available in the app (an app store requirement). It removes the person's posts, comments, applause, favorites, and tags. Remixes of their posts show the placeholder.
+- **Account deletion:** available in the app (an app store requirement). It removes the person's posts, comments, applause, favorites, and tags. Riffs on their posts show the placeholder.
 - **Drafts:** no server drafts. An unfinished post is saved on the device until it's posted or thrown away.
 
 ## 13. Safety and moderation
@@ -181,11 +181,11 @@ Keep the in-app category list to about 8 options plus "Something else."
 
 If A blocks B:
 
-- Neither person sees the other's posts, profile, or comments anywhere: feeds, search, remix chains.
-- Neither can comment on, remix, applaud, or favorite the other's posts.
+- Neither person sees the other's posts, profile, or comments anywhere: feeds, search, riff chains.
+- Neither can comment on, riff on, applaud, or favorite the other's posts.
 - B isn't told. A's profile shows B "not available."
 - Comments B already left on A's posts are hidden from everyone.
-- Existing remixes between them stay. A and B see the placeholder in place of the other's post; everyone else still sees the credit.
+- Existing riffs between them stay. A and B see the placeholder in place of the other's post; everyone else still sees the credit.
 - Blocking is available on both mobile and web.
 
 ### Moderation tooling (single moderator at launch)
@@ -207,7 +207,7 @@ _Not legal advice. Have someone qualified review before the public launch._
 - **Minimum age:** 18+, with birth date entered at signup. The birth date is checked and discarded; only the time of the age check (`age_confirmed_at`) is stored.
 - **Region:** US only. App store listings are US only; the terms say US users (web can't strictly block other regions).
 - **Terms of service and privacy policy:** start from a reputable template, then add the Riffit specifics:
-  - by posting, you allow others to make and post their own interpretations (remixes) of your look
+  - by posting, you allow others to make and post their own interpretations (riffs) of your look
   - the private-tag promise: the platform sees tag words, not who used them
   - location data is removed from photos
   - the reporting and removal rules
@@ -215,8 +215,8 @@ _Not legal advice. Have someone qualified review before the public launch._
 
 ## 15. Platforms
 
-- **Mobile (iOS and Android, through Expo):** everything, including posting and remixing. Mobile is built first.
-- **Web (Expo + React Native Web):** browse the feed and filters, view posts and remix chains, comment, favorite, applaud, tag (public tags on your own content, private tags on anything), report, and block. No posting or remixing on the web for now.
+- **Mobile (iOS and Android, through Expo):** everything, including posting and riffing. Mobile is built first.
+- **Web (Expo + React Native Web):** browse the feed and filters, view posts and riff chains, comment, favorite, applaud, tag (public tags on your own content, private tags on anything), report, and block. No posting or riffing on the web for now.
 - **Sign-in (mobile and web):** email one-time code (no passwords), Sign in with Apple, and Google. Apple requires Sign in with Apple when other social sign-in is offered.
 
 ## 16. Technology and architecture
@@ -230,7 +230,7 @@ _Not legal advice. Have someone qualified review before the public launch._
 | Logic | Where |
 |---|---|
 | Report thresholds, daily report limit, account-age rule | Database (rules and triggers) |
-| 24-hour remix-link rule | Database |
+| 24-hour riff-link rule | Database |
 | Blocked-words check on tag creation | Database |
 | Block visibility | RLS |
 | Image processing (EXIF stripping, resizing, HEIC conversion) | Server: Supabase Edge Functions if feasible, otherwise a small Hono service on Node (e.g. Fly.io or Railway) |
@@ -246,7 +246,7 @@ _Not legal advice. Have someone qualified review before the public launch._
 | `post_tags`, `profile_tags` | Public tag assignments | Anyone; only the post or profile owner can add or remove them |
 | `private_tag_assignments` | Which tag a user put on which post or profile | Only that user |
 
-**Ownership rules RLS must cover:** profiles, posts, images, remix links, comments, applause, favorites, public and private tag assignments, reports, blocks, notifications.
+**Ownership rules RLS must cover:** profiles, posts, images, riff links, comments, applause, favorites, public and private tag assignments, reports, blocks, notifications.
 
 ### Testing
 
@@ -255,7 +255,7 @@ _Not legal advice. Have someone qualified review before the public launch._
 | RLS rules and database logic | **pgTAP**, run with `supabase test db` | The most important layer: privacy promises (private tags, favorites, blocks, report hiding) live in RLS. Every policy gets tests for who can and can't read or write. |
 | Shared packages (domain logic, validation) and the Hono service | **Vitest** | |
 | React Native components | **Jest with `jest-expo`** + **React Native Testing Library** | Expo's supported setup; the one place a second test runner is worth it. |
-| End-to-end, mobile | **Maestro** | First flow: the Phase 1 core loop (post, remix, comment, block). |
+| End-to-end, mobile | **Maestro** | First flow: the Phase 1 core loop (post, riff, comment, block). |
 | End-to-end, web | **Playwright** | |
 
 **When each comes in:**
@@ -269,7 +269,7 @@ This document describes the full MVP. **Build it in phases, not all at once.** E
 
 ### Get right from day one (cheap now, painful later)
 
-- One "remixed from" link per post; remixes survive their original (placeholder card)
+- One "riffed from" link per post; riffs survive their original (placeholder card)
 - RLS on every table
 - Tags stored once; private tag assignments in their own table
 - Location data stripped from photos on the server
@@ -283,21 +283,21 @@ _Goal: test success milestones 1 and 2 with an invite-only group (TestFlight / E
 1. Monorepo, Expo app, Supabase project, sign-in (email code, Apple, Google), 18+ check at signup (birth date not stored), basic profiles.
 2. **Early check:** image processing on Supabase Edge Functions (fall back to a small Hono/Node service if needed).
 3. Image posts: upload, EXIF stripping, resizing, reordering, alt text prompt.
-4. Remixes: the "remixed from" link with the 24-hour rule, remixes listed on the original, placeholder card.
-5. Feed: newest first, plus a tag filter. Remix count on cards.
+4. Riffs: the "riffed from" link with the 24-hour rule, riffs listed on the original, placeholder card.
+5. Feed: newest first, plus a tag filter. Riff count on cards.
 6. Comments and one level of replies; post owners can delete comments.
 7. Public tags (owner only) with the blocked-words check.
 8. Blocking (full rules from section 13).
 9. **Simple reporting:** every report hides the content for the reporter and emails the moderator. All review is manual, using the Supabase dashboard and a saved query for open reports.
-10. Remix and comment notifications (in-app).
+10. Riff and comment notifications (in-app).
 
-**End-to-end milestone:** a user creates a profile and an outfit post; another user remixes it; the original shows its remixes; both users can comment and tag; reporting and blocking work.
+**End-to-end milestone:** a user creates a profile and an outfit post; another user riffs on it; the original shows its riffs; both users can comment and tag; reporting and blocking work.
 
 ### Phase 2 — Core MVP
 
 _Goal: make exploring and organizing rewarding; test milestones 3 and 4._
 
-1. Feed sort (most remixed over 30 / 60 / 90 days / all time), exclude-tag and favorites filters, saved filters with a clear button.
+1. Feed sort (most riffed on over 30 / 60 / 90 days / all time), exclude-tag and favorites filters, saved filters with a clear button.
 2. Private tags, autocomplete rules, filtering by your own private tags.
 3. Favorites (posts and profiles) and the private "Saved" view.
 4. Applause.
@@ -317,7 +317,7 @@ _Goal: everything required to open to the public and pass App Store review._
 4. Report-resolved and moderation-action notifications.
 5. Account deletion in the app.
 6. Terms of service, privacy policy, DMCA agent and takedown process.
-7. Push notifications for remixes, batched.
+7. Push notifications for riffs, batched.
 
 ### Phase 4 — After launch
 
@@ -335,11 +335,11 @@ Claiming a page, identity verification, and automatic matching come later still.
 Each step matters once the previous one is happening:
 
 1. **People show up:** someone invited signs up and makes a post.
-2. **People remix:** someone remixes a post without being asked.
-3. **Strangers connect:** someone remixes a post by someone they don't know personally. _This is the real signal that Riffit works._
+2. **People riff:** someone riffs on a post without being asked.
+3. **Strangers connect:** someone riffs on a post by someone they don't know personally. _This is the real signal that Riffit works._
 4. **People come back:** someone posts a second time without being reminded.
 
-Possible later metrics, once there's a real user base: share of posts that are remixes; share of originals remixed within 30 days; chains 3+ levels deep; 2-week return rate.
+Possible later metrics, once there's a real user base: share of posts that are riffs; share of originals riffed on within 30 days; chains 3+ levels deep; 2-week return rate.
 
 ## 19. Open questions
 
@@ -359,11 +359,11 @@ Possible later metrics, once there's a real user base: share of posts that are r
 - A teens-only space (separate audience, likely age verification, stricter defaults)
 - Server-saved drafts that sync across devices
 - Video
-- Multiple inspirations per remix
-- Posting and remixing on the web
+- Multiple inspirations per riff
+- Posting and riffing on the web
 - External images and links, with clear attribution and copyright rules (especially for sources like Pinterest)
 - Saved named feeds ("My thrift people") and OR tag filters
-- Per-post controls for applause, comments, and remixing; private posts
+- Per-post controls for applause, comments, and riffing; private posts
 - Appeals and strike systems; automated moderation; moderator roles and queues
 - Expanding beyond the US
 - Style reference pages for public figures who aren't members (see below; planned for Phase 4, section 17)
@@ -373,18 +373,18 @@ Possible later metrics, once there's a real user base: share of posts that are r
 
 _Added 2026-10-29. Not MVP; planned for Phase 4 (section 17). Recorded here so that MVP choices don't rule it out._
 
-Members may post photos of looks worn by public figures (celebrities, influencers, a favorite comedian) who aren't on Riffit. Later, posts that show the same person could be gathered on a **style reference page**: that person's looks plus the remixes they inspired. Treat these outfits as starting points for interpretation, not ideals to copy. The interesting part is how a look changes as people remix it, including cheaper, more accessible, more personal, or completely different versions. Celebrity looks should add to the remix network, not dominate it.
+Members may post photos of looks worn by public figures (celebrities, influencers, a favorite comedian) who aren't on Riffit. Later, posts that show the same person could be gathered on a **style reference page**: that person's looks plus the riffs they inspired. Treat these outfits as starting points for interpretation, not ideals to copy. The interesting part is how a look changes as people riff on it, including cheaper, more accessible, more personal, or completely different versions. Celebrity looks should add to the riff network, not dominate it.
 
 **Pages**
 
 - Call them "style reference pages," never profiles or unclaimed accounts.
 - Show the person's name and say clearly that they aren't a Riffit member. Nothing may imply that they take part in or endorse Riffit.
-- Contents: posts showing the person, remixes of those posts, external links, attribution.
+- Contents: posts showing the person, riffs on those posts, external links, attribution.
 - Later, the person can verify their identity and either connect the page to their own account or ask for it to be removed. Removal requests are separate from copyright complaints.
 
 **Data model direction** (a concept, not an approved migration)
 
-- People are entities, not tags. **Tags describe the look, people identify who's in it, and remix links record creative influence.** Keep all three separate.
+- People are entities, not tags. **Tags describe the look, people identify who's in it, and riff links record creative influence.** Keep all three separate.
 - Sketch: `people` (id, display_name, slug, claimed_by_user_id nullable, status), `post_people` (post_id, person_id), `person_links` (person_id, url, type). The nullable claim column can link a page to a real account later, so no account is ever created on someone's behalf.
 
 **Matching and merging**

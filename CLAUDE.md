@@ -2,11 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-Riffit (working name) is a fashion community built on **remixes**: someone posts a look, others post their own interpretations, and the remix network is the product. The full product and architecture spec is [riffit-plan.md](riffit-plan.md). Read the relevant section before building a feature, and don't invent answers to its open questions (§19). Ask instead.
+Riffit (working name) is a fashion community built on **riffs**: someone posts a look, others post their own interpretations, and the riff network is the product. The full product and architecture spec is [riffit-plan.md](riffit-plan.md). Read the relevant section before building a feature, and don't invent answers to its open questions (§19). Ask instead.
 
 ## Status
 
-Phase 1 (invite-only friends beta) is in progress. So far: the database foundation for users (profiles and the 18+ check), RLS, and tests. The Expo app exists as a scaffold in `apps/mobile`. **Not started:** posts, images, and remixes; sign-in; everything after that. Build phase by phase (§17), extending the schema with new migrations rather than modeling future phases up front. Check §4 "Out of scope" and §20 before adding anything.
+Phase 1 (invite-only friends beta) is in progress. So far: the database foundation for users (profiles and the 18+ check), RLS, and tests. The Expo app exists as a scaffold in `apps/mobile`. **Not started:** posts, images, and riffs; sign-in; everything after that. Build phase by phase (§17), extending the schema with new migrations rather than modeling future phases up front. Check §4 "Out of scope" and §20 before adding anything.
 
 ## Work in small chunks
 
@@ -66,7 +66,7 @@ pnpm supabase test db supabase/tests/database/00010_profiles.test.sql
 **18+ and birth dates:** `complete_onboarding(username, display_name, birth_date)` compares the birth date and discards it. Only `profiles.age_confirmed_at` is stored. It is read-only for users (left out of the column update grant) and is visible to other signed-in users, which reveals nothing beyond `created_at`. Never store, return, or log a birth date (keep Postgres parameter logging off). A schema guard test rejects any `birth`/`dob` column. More generally, don't keep personal data we have no use for.
 
 **Non-negotiables from the spec (for upcoming work):**
-- One "remixed from" link per post. Remixes outlive their original and show a neutral "Original not available" placeholder (§3).
+- One "riffed from" link per post. Riffs outlive their original and show a neutral "Original not available" placeholder (§3).
 - Each tag is stored once; private tag assignments live in their own table, readable only by the assigner (admins included).
 - EXIF/GPS is stripped on the server.
 - Favorites never leak: no notification, count, or list, and no effect on ranking.
@@ -74,9 +74,9 @@ pnpm supabase test db supabase/tests/database/00010_profiles.test.sql
 
 ## Product language
 
-- "Remix" everywhere (`Remix this`, `12 remixes`, `remixed from @maya`).
+- "Riff" everywhere (`Riff on this`, `12 riffs`, `riffed from @maya`).
 - "Favorite", never "bookmark."
 - Applause has no public count.
-- The remix count is the one public number, hidden at zero.
+- The riff count is the one public number, hidden at zero.
 - Placeholder and moderation copy stays vague ("Original not available," never "removed for violating rules").
 - When unsure whether a feature belongs, apply the guiding question in spec §22.

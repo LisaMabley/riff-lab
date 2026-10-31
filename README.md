@@ -1,6 +1,6 @@
 # Riffit
 
-Riffit (working name) is a fashion community built on **remixes**. Someone posts a look or styling idea, others post their own versions of it, and those remixes can be remixed in turn. The remix network is the product. It values creativity and participation over popularity: the only public number is a post's remix count.
+Riffit (working name) is a fashion community built on **riffs**. Someone posts a look or styling idea, others post their own versions of it, and those riffs can be riffed on in turn. The riff network is the product. It values creativity and participation over popularity: the only public number is a post's riff count.
 
 The full product and architecture spec is [riffit-plan.md](riffit-plan.md). Read the relevant section before building a feature.
 
@@ -79,9 +79,9 @@ Upcoming features have more privacy rules of this kind: favorites never leak, pr
 
 Words matter here. Use these consistently in code, UI copy, and docs:
 
-- **Remix**, everywhere: "Remix this," "12 remixes," "remixed from @maya."
+- **Riff**, everywhere: "Riff on this," "12 riffs," "riffed from @maya."
 - **Favorite**, never "bookmark."
-- **Applause** has no public count. The remix count is the only public number, and it's hidden at zero.
+- **Applause** has no public count. The riff count is the only public number, and it's hidden at zero.
 - **Moderation and placeholder copy stays vague**: "Original not available," never "removed for violating rules."
 
 When you're unsure whether a feature belongs, ask the guiding question in spec §22.
