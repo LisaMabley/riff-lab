@@ -1,6 +1,6 @@
 # Riffit — Project Plan
 
-_Updated 2026-10-30_
+_Updated 2026-10-31_
 
 ## 1. Overview
 
@@ -19,6 +19,7 @@ The product focuses on fashion and personal style. Expanding into other creative
   - **Exception, on purpose:** riff counts are public, because they reward making something. Applause stays private.
 - Make room for different bodies, budgets, identities, abilities, modesty needs, and styles.
 - Treat safety and accessibility as part of the product.
+- As little friction as possible for kindness, and as much as reasonable for cruelty. Voice, draft copy, and community culture ideas live in [docs/voice-and-community.md](docs/voice-and-community.md).
 
 ## 3. Posts and riffs
 
@@ -26,6 +27,7 @@ The product focuses on fashion and personal style. Expanding into other creative
 - A riff has exactly **one** "riffed from" post. Multiple inspirations are out of scope.
 - The riff link can be set or changed for **24 hours** after posting. After that it can only be removed.
 - The original post shows all its riffs together. Riffs can be riffed on, forming branching chains.
+- Publishing a riff gets a small celebration that credits both the original and the new riff. Save full-screen effects for milestones such as a first riff, and respect Reduce Motion.
 - **Riffs always survive their original.** When the original can't be shown, the "riffed from" spot shows a neutral placeholder card ("Original not available"):
 
 | Why the original is gone | Who sees the placeholder |
@@ -96,6 +98,7 @@ _This is the full MVP. It's built in three phases; see section 17 for what comes
 - No comment likes or emoji reactions.
 - Authors can edit their comments (shown as "edited") and delete them.
 - **Post owners can delete any comment on their posts.**
+- The comment field shows rotating prompts that invite curiosity and appreciation.
 
 ## 8. Tags
 
@@ -156,6 +159,12 @@ Each type except moderation notices can be switched off. No notifications for be
 
 ## 13. Safety and moderation
 
+### Code of conduct
+
+- Everyone agrees to a short, readable code of conduct during onboarding, on one screen.
+- We store the date they agreed and the version they agreed to. Like `age_confirmed_at`, users can't edit these.
+- When the code of conduct changes, existing members don't need to agree again. Once notifications exist, we may tell them about the change.
+
 ### Reporting
 
 Posts, comments, and profiles can be reported.
@@ -206,6 +215,7 @@ _Not legal advice. Have someone qualified review before the public launch._
 
 - **Minimum age:** 18+, with birth date entered at signup. The birth date is checked and discarded; only the time of the age check (`age_confirmed_at`) is stored.
 - **Region:** US only. App store listings are US only; the terms say US users (web can't strictly block other regions).
+- **Code of conduct:** a friendly summary of community expectations (section 13), separate from the terms of service.
 - **Terms of service and privacy policy:** start from a reputable template, then add the Riffit specifics:
   - by posting, you allow others to make and post their own interpretations (riffs) of your look
   - the private-tag promise: the platform sees tag words, not who used them
@@ -280,12 +290,12 @@ This document describes the full MVP. **Build it in phases, not all at once.** E
 
 _Goal: test success milestones 1 and 2 with an invite-only group (TestFlight / Expo)._
 
-1. Monorepo, Expo app, Supabase project, sign-in (email code, Apple, Google), 18+ check at signup (birth date not stored), basic profiles.
+1. Monorepo, Expo app, Supabase project, sign-in (email code, Apple, Google), 18+ check at signup (birth date not stored), code of conduct agreement, basic profiles.
 2. **Early check:** image processing on Supabase Edge Functions (fall back to a small Hono/Node service if needed).
 3. Image posts: upload, EXIF stripping, resizing, reordering, alt text prompt.
-4. Riffs: the "riffed from" link with the 24-hour rule, riffs listed on the original, placeholder card.
+4. Riffs: the "riffed from" link with the 24-hour rule, riffs listed on the original, placeholder card, a celebration on publishing.
 5. Feed: newest first, plus a tag filter. Riff count on cards.
-6. Comments and one level of replies; post owners can delete comments.
+6. Comments and one level of replies; post owners can delete comments; comment prompts.
 7. Public tags (owner only) with the blocked-words check.
 8. Blocking (full rules from section 13).
 9. **Simple reporting:** every report hides the content for the reporter and emails the moderator. All review is manual, using the Supabase dashboard and a saved query for open reports.
@@ -347,6 +357,7 @@ Possible later metrics, once there's a real user base: share of posts that are r
 - Profile fields (display name, pronouns, bio, profile tags, links?).
 - Search scope: tags only, or also usernames and post text?
 - Text limits for posts, comments, and tags.
+- **Holding harmful comments before they reach the recipient.** Moderation today is reactive (§13): content goes live, then reports hide it. Holding comments first needs either automated detection, which §4 puts out of scope, or a moderator reviewing them, and there's one moderator at launch. Undecided whether to do this, and how.
 - **"Who is in this photo?" at upload** (Me / Someone else / AI-generated / Unknown). Proposed 2026-10-29 so that style reference pages (§20) stay possible later. Not yet in the MVP spec. Undecided:
   - whether it's in the MVP, and in which phase;
   - per post or per image (AI labels are per image, §10), and how its "AI-generated" option relates to the AI toggle;
@@ -365,6 +376,8 @@ Possible later metrics, once there's a real user base: share of posts that are r
 - Saved named feeds ("My thrift people") and OR tag filters
 - Per-post controls for applause, comments, and riffing; private posts
 - Appeals and strike systems; automated moderation; moderator roles and queues
+- A tone check that offers a second look before a harsh comment posts (needs automated detection)
+- Escalating limits for repeated harm: slower posting or commenting, temporary commenting restrictions, moderation review, and suspension or removal for serious or repeated violations
 - Expanding beyond the US
 - Style reference pages for public figures who aren't members (see below; planned for Phase 4, section 17)
 - Creator communities and challenges, creator tools or services, optional paid features, open social protocols. Core participation should stay accessible. Business model and open-source vs. commercial direction are undecided.
@@ -406,7 +419,7 @@ Members may post photos of looks worn by public figures (celebrities, influencer
 
 ## 21. Visual direction
 
-Creative, inclusive, down-to-earth, and a little rebellious, without prescribing one fashion subculture. References: BUST Magazine, Miranda July's Somebody app, Wet Leg, The Linda Lindas, Lola Young. Use them for attitude, not imitation.
+Creative, inclusive, down-to-earth, and a little rebellious, without prescribing one fashion subculture. References: BUST Magazine, Miranda July's Somebody app, Wet Leg, The Linda Lindas, Lola Young. Use them for attitude, not imitation. The app's written voice is in [docs/voice-and-community.md](docs/voice-and-community.md).
 
 ## 22. Guiding question
 
