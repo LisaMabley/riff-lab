@@ -9,7 +9,7 @@ Riffit is a fashion community built around inspiration, interpretation, and crea
 The product focuses on fashion and personal style. Expanding into other creative fields can wait.
 
 - **App name:** undecided. Riffit is the working name; Riff Collective is another candidate.
-- **Action word:** "riff" (button: _Riff on this_; count: _12 riffs_; attribution: _riffed from @maya_). Chosen independently of the app name. Alternatives considered: remix, take, spin.
+- **Action word:** "riff" (button: _Riff on this_; count: _12 riffs_; attribution: _riffed from @maya_). Pairs with the working app name. Alternatives considered: remix, take, spin.
 
 ## 2. Product principles
 
