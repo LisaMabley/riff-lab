@@ -49,7 +49,7 @@ The seed creates three users who have finished onboarding: `maya`, `jo.makes`, a
 | `pnpm lint` | ESLint across packages |
 | `pnpm test` | Vitest across packages |
 | `pnpm format` / `pnpm format:check` | Formats with Prettier, or checks formatting. Skips `supabase/` and Markdown. |
-| `pnpm --filter @riff-lab/mobile start` | Starts the Expo dev server. Scan the QR code with Expo Go on a phone on the same Wi-Fi. On an iPhone, sign in to the same Expo account in Expo Go and with `npx expo login --no-browser` first (the default browser login crashes on Windows in Expo CLI 58.1.17). |
+| `pnpm --filter @riffit/mobile start` | Starts the Expo dev server. Scan the QR code with Expo Go on a phone on the same Wi-Fi. On an iPhone, sign in to the same Expo account in Expo Go and with `npx expo login --no-browser` first (the default browser login crashes on Windows in Expo CLI 58.1.17). |
 | `pnpm db:start` / `pnpm db:stop` | Starts or stops local Supabase |
 | `pnpm db:reset` | Recreates the local database from migrations and the seed |
 | `pnpm test:db` | Runs all pgTAP tests (`supabase test db`) |
@@ -58,7 +58,7 @@ The seed creates three users who have finished onboarding: `maya`, `jo.makes`, a
 Running a single test:
 
 ```sh
-pnpm --filter @riff-lab/core exec vitest run src/age.test.ts
+pnpm --filter @riffit/core exec vitest run src/age.test.ts
 pnpm supabase test db supabase/tests/database/00010_profiles.test.sql
 ```
 

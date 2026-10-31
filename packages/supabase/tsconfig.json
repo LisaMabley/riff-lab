@@ -1,4 +1,4 @@
 {
-  "extends": "@riff-lab/tsconfig/base.json",
+  "extends": "@riffit/tsconfig/base.json",
   "include": ["src"]
 }

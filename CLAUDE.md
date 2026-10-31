@@ -35,10 +35,10 @@ pnpm db:reset        # re-apply migrations + supabase/seed.sql
 pnpm test:db         # all pgTAP tests (supabase test db)
 pnpm db:types        # regenerate packages/supabase/src/database.types.ts after changing a migration
 
-pnpm --filter @riff-lab/mobile start   # Expo dev server; scan the QR code with Expo Go
+pnpm --filter @riffit/mobile start   # Expo dev server; scan the QR code with Expo Go
 
 # single tests
-pnpm --filter @riff-lab/core exec vitest run src/age.test.ts
+pnpm --filter @riffit/core exec vitest run src/age.test.ts
 pnpm supabase test db supabase/tests/database/00010_profiles.test.sql
 ```
 

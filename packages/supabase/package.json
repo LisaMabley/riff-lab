@@ -1,5 +1,5 @@
 {
-  "name": "@riff-lab/supabase",
+  "name": "@riffit/supabase",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -10,6 +10,6 @@
     "typecheck": "tsc"
   },
   "devDependencies": {
-    "@riff-lab/tsconfig": "workspace:*"
+    "@riffit/tsconfig": "workspace:*"
   }
 }

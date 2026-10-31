@@ -1,5 +1,5 @@
 {
-  "name": "@riff-lab/mobile",
+  "name": "@riffit/mobile",
   "version": "0.0.0",
   "private": true,
   "main": "expo-router/entry",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^15.1.1",
-    "@riff-lab/core": "workspace:*",
+    "@riffit/core": "workspace:*",
     "expo": "~58.0.21",
     "expo-constants": "~58.0.14",
     "expo-linking": "~58.0.15",
@@ -24,7 +24,7 @@
     "react-native-screens": "~4.30.1"
   },
   "devDependencies": {
-    "@riff-lab/tsconfig": "workspace:*",
+    "@riffit/tsconfig": "workspace:*",
     "@types/react": "~19.3.0",
     "typescript": "~6.0.3"
   }
